@@ -1,0 +1,17 @@
+﻿{
+  "status": "success",
+  "result": {
+    "fileName": "firebase-js-config.json",
+    "fileContents": "{\n  \"projectId\": \"gymrat-ai-app\",\n  \"appId\": \"1:1038927483959:web:3cc4aba69451e77c3d1bb2\",\n  \"storageBucket\": \"gymrat-ai-app.firebasestorage.app\",\n  \"apiKey\": \"AIzaSyA_q85NWIW7VroIa0zD-xqBz_xq595_SA0\",\n  \"authDomain\": \"gymrat-ai-app.firebaseapp.com\",\n  \"messagingSenderId\": \"1038927483959\",\n  \"projectNumber\": \"1038927483959\",\n  \"version\": \"2\"\n}",
+    "sdkConfig": {
+      "projectId": "gymrat-ai-app",
+      "appId": "1:1038927483959:web:3cc4aba69451e77c3d1bb2",
+      "storageBucket": "gymrat-ai-app.firebasestorage.app",
+      "apiKey": "AIzaSyA_q85NWIW7VroIa0zD-xqBz_xq595_SA0",
+      "authDomain": "gymrat-ai-app.firebaseapp.com",
+      "messagingSenderId": "1038927483959",
+      "projectNumber": "1038927483959",
+      "version": "2"
+    }
+  }
+}

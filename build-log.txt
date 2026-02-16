@@ -1,0 +1,113 @@
+﻿▲ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 21.3s
+  Running TypeScript ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/10) ...
+node.exe : Error 
+occurred 
+prerendering page 
+"/_not-found". Read 
+more: https://nextjs.
+org/docs/messages/pre
+render-error
+At line:1 char:1
++ & 
+"G:\Nodejs/node.exe" 
+"G:\Nodejs/node_modul
+es/npm/bin/npx-cli.js
+" ne ...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (Error o   
+ ccurred ...prere    
+nder-error:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+Error 
+[FirebaseError]: 
+Firebase: Error (auth
+/invalid-api-key).
+    at bK (G:\GymRat\
+gymrat-ai\.next\serve
+r\chunks\ssr\[root-of
+-the-server]__0afa110
+4._.js:3:326711)
+    at bL (G:\GymRat\
+gymrat-ai\.next\serve
+r\chunks\ssr\[root-of
+-the-server]__0afa110
+4._.js:3:326760)
+    at 
+ag.instanceFactory (G
+:\GymRat\gymrat-ai\.n
+ext\server\chunks\ssr
+\[root-of-the-server]
+__0afa1104._.js:3:378
+829)
+    at ai.getOrInitia
+lizeService (G:\GymRa
+t\gymrat-ai\.next\ser
+ver\chunks\ssr\[root-
+of-the-server]__0afa1
+104._.js:3:307018)
+    at ai.initialize 
+(G:\GymRat\gymrat-ai\
+.next\server\chunks\s
+sr\[root-of-the-serve
+r]__0afa1104._.js:3:3
+06426)
+    at cU (G:\GymRat\
+gymrat-ai\.next\serve
+r\chunks\ssr\[root-of
+-the-server]__0afa110
+4._.js:3:364163)
+    at dL (G:\GymRat\
+gymrat-ai\.next\serve
+r\chunks\ssr\[root-of
+-the-server]__0afa110
+4._.js:3:379467)
+    at module 
+evaluation (G:\GymRat
+\gymrat-ai\.next\serv
+er\chunks\ssr\[root-o
+f-the-server]__0afa11
+04._.js:14:66176)
+    at 
+instantiateModule (G:
+\GymRat\gymrat-ai\.ne
+xt\server\chunks\ssr\
+[turbopack]_runtime.j
+s:740:9)
+    at getOrInstantia
+teModuleFromParent (G
+:\GymRat\gymrat-ai\.n
+ext\server\chunks\ssr
+\[turbopack]_runtime.
+js:763:12) {
+  code: 'auth/invalid
+-api-key',
+  customData: 
+[Object],
+  digest: 
+'2028453449'
+}
+Export encountered 
+an error on 
+/_not-found/page: 
+/_not-found, exiting 
+the build.
+⨯ Next.js build 
+worker exited with 
+code: 1 and signal: 
+null

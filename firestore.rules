@@ -1,0 +1,114 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // =============================================
+    // Helper Functions
+    // =============================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isValidString(field) {
+      return field is string && field.size() > 0;
+    }
+
+    function isValidNumber(field) {
+      return field is number && field >= 0;
+    }
+
+    // =============================================
+    // User Profiles
+    // =============================================
+
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      allow create: if isOwner(userId)
+        && isValidString(request.resource.data.email)
+        && isValidString(request.resource.data.displayName);
+      allow update: if isOwner(userId);
+      allow delete: if isOwner(userId);
+
+      // Personal Records (subcollection)
+      match /personalRecords/{recordId} {
+        allow read: if isOwner(userId);
+        allow write: if isOwner(userId)
+          && isValidString(request.resource.data.exerciseName)
+          && isValidNumber(request.resource.data.weight);
+      }
+    }
+
+    // =============================================
+    // Workouts
+    // =============================================
+
+    match /workouts/{workoutId} {
+      allow read: if isAuthenticated()
+        && resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.exercises is list
+        && request.resource.data.exercises.size() > 0;
+      allow update: if isAuthenticated()
+        && resource.data.userId == request.auth.uid;
+      allow delete: if isAuthenticated()
+        && resource.data.userId == request.auth.uid;
+    }
+
+    // =============================================
+    // Workout Plans
+    // =============================================
+
+    match /workoutPlans/{planId} {
+      allow read: if isAuthenticated()
+        && resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated()
+        && request.resource.data.userId == request.auth.uid
+        && isValidString(request.resource.data.name);
+      allow update: if isAuthenticated()
+        && resource.data.userId == request.auth.uid;
+      allow delete: if isAuthenticated()
+        && resource.data.userId == request.auth.uid;
+    }
+
+    // =============================================
+    // Workout Sessions (Daily Weight Tracking)
+    // =============================================
+
+    match /workoutSessions/{sessionId} {
+      allow read: if isAuthenticated()
+        && resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated()
+        && request.resource.data.userId == request.auth.uid
+        && isValidString(request.resource.data.planId)
+        && request.resource.data.exercises is list;
+      allow update: if isAuthenticated()
+        && resource.data.userId == request.auth.uid;
+      allow delete: if isAuthenticated()
+        && resource.data.userId == request.auth.uid;
+    }
+
+    // =============================================
+    // Chat Conversations
+    // =============================================
+
+    match /chats/{chatId} {
+      // Allow access if the document ID matches the user's ID (fixes "permission denied" on non-existent docs)
+      allow read, write: if isAuthenticated() && chatId == "chat_" + request.auth.uid;
+    }
+
+    // =============================================
+    // Default: Deny everything else
+    // =============================================
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
